@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\StudentController;
  
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +33,7 @@ Route::controller(AdminController::class)->group(function(){
 
 
 // Apoderado Routes 
-/*Route::controller(StudentController::class)->group(function(){
+Route::controller(StudentController::class)->group(function(){
     Route::get('/all/students','allStudents')->name('all.students');
     
     Route::get('/add/student','addStudent')->name('add.student');
@@ -43,7 +44,7 @@ Route::controller(AdminController::class)->group(function(){
 
     Route::get('/delete/student/{id}','deleteStudent')->name('delete.student');
     
-});*/
+});
 
 
 /*Route::middleware([

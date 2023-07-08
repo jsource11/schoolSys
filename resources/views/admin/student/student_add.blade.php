@@ -14,16 +14,25 @@
 
                         
 
-                        <form method="post" id="myForm" action="#" enctype="multipart/form-data">
+                        <form method="post" id="myForm" action="{{ route('store.student') }}" enctype="multipart/form-data">
                             @csrf
                             
+                            <div class="row mb-3">
+                                <label for="dni" class="col-sm-2 col-form-label">DNI</label>
+                                <div class="form-group col-sm-5">
+                                    <input name="dni" value="{{ old('dni') }}"  class="form-control" type="number" id="dni">
+                                    @error('dni')
+                                        <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <!-- end row -->
                            
                             <div class="row mb-3">
-                                <label for="producto" class="col-sm-2 col-form-label">Nombre</label>
+                                <label for="nombres" class="col-sm-2 col-form-label">Nombres</label>
                                 <div class="form-group col-sm-10">
-                                    <input name="producto" value="{{ old('producto') }}"  class="form-control" type="text" id="producto">
-                                    
-                                    @error('producto')
+                                    <input name="nombres" value="{{ old('nombres') }}"  class="form-control" type="text" id="nombres">
+                                    @error('nombres')
                                         <span class="text-danger">{{$message}}</span>
                                     @enderror
                                 </div>
@@ -31,88 +40,61 @@
                             <!-- end row -->
 
                             <div class="row mb-3">
-                                <label for="descripcion" class="col-sm-2 col-form-label">Descripción</label>
+                                <label for="apellidos" class="col-sm-2 col-form-label">Apellidos</label>
                                 <div class="form-group col-sm-10">
-                                    <input name="descripcion" value="{{ old('descripcion') }}"  class="form-control" type="text" id="descripcion">
+                                    <input name="apellidos" value="{{ old('apellidos') }}"  class="form-control" type="text" id="apellidos">
+                                    @error('apellidos')
+                                        <span class="text-danger">{{$message}}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <!-- end row -->
 
                             <div class="row mb-3">
-                                <label for="precio_uni" class="col-sm-2 col-form-label">Precio Unitario (S/.)</label>
-                                <div class="form-group col-sm-2">
-                                    <input name="precio_uni" value="{{ old('precio_uni') }}" class="form-control" type="text" id="precio_uni">
-                                    
-                                </div>
-                            </div>
-                            <!-- end row -->
-
-                            <div class="row mb-3">
-                                <label for="stock_ini" class="col-sm-2 col-form-label">Stock Inicial</label>
-                                <div class="form-group col-sm-2">
-                                    <input name="stock_ini" value="{{ old('stock_ini') }}" class="form-control" type="number" id="stock_ini">
-                                    
-                                </div>
-                            </div>
-                            <!-- end row -->
-
-                            <div class="row mb-3">
-                                <label for="stock_act" class="col-sm-2 col-form-label">Stock Actual</label>
-                                <div class="form-group col-sm-2">
-                                    <input name="stock_act" value="{{ old('stock_act') }}" class="form-control" type="number" id="stock_act">
-                                    
-                                </div>
-                            </div>
-                            <!-- end row -->
-
-                           
-
-
-                            <div class="row mb-3">
-                                <label for="unidad_med" class="col-sm-2 col-form-label">Unidad med.</label>
+                                <label for="genero" class="col-sm-2 col-form-label">Genero</label>
                                 <div class="col-sm-10">
-                                    <select name="unidad_med" class="form-select" aria-label="unidad_med">
+                                    <select name="genero" class="form-select" aria-label="genero">
                                         <option selected="">-- Seleccionar -- </option>
-                                        <option value="Gramos">Gramos</option>
-                                        <option value="Litros">Litros</option>
-                                        <option value="Paquetes">Paquetes</option>
-                                        <option value="Unidades">Unidades</option>
-                                        <option value="Tarros">Tarros</option>
-                                        <option value="Botellas">Botellas</option>
+                                            <option value="Masculino">Masculino</option>
+                                            <option value="Femenino">Femenino</option>
                                     </select>
                                 </div>
                             </div>
+                            <!-- end row -->
+                           
+
+                            <div class="row mb-3">
+                                <label for="telefono" class="col-sm-2 col-form-label">Telefono</label>
+                                <div class="form-group col-sm-5">
+                                    <input name="telefono" value="{{ old('telefono') }}" class="form-control" type="number" id="telefono">
+                                    
+                                </div>
+                            </div>
+                            <!-- end row -->
+
+                            <div class="row mb-3">
+                                <label for="direccion" class="col-sm-2 col-form-label">Dirección</label>
+                                <div class="form-group col-sm-10">
+                                    <input name="direccion" value="{{ old('direccion') }}" class="form-control" type="text" id="direccion">
+                                    
+                                </div>
+                            </div>
+                            <!-- end row -->
 
                             <!-- end row -->
 
                             <div class="row mb-3">
-                                <label for="categoria" class="col-sm-2 col-form-label">Categoría</label>
+                                <label for="categoria" class="col-sm-2 col-form-label">Tipo de Estudiante</label>
                                 <div class="col-sm-10">
                                     <select name="categoria" class="form-select" aria-label="categoria">
                                         <option selected="">-- Seleccionar -- </option>
-                                        @foreach ($dataCategories as $item )
-                                            <option value="{{ $item->id }}">{{ $item->nombre }}</option>
-                                        @endforeach
+                                            <option value="Externo">Externo</option>
+                                            <option value="Interno">Interno</option>
                                     </select>
                                 </div>
                             </div>
                             <!-- end row -->
 
-                            
-
-
-                            <div class="row mb-3">
-                                <label for="proveedor" class="col-sm-2 col-form-label">Proveedor</label>
-                                <div class="col-sm-10">
-                                    <select name="proveedor" class="form-select" aria-label="proveedor">
-                                        <option selected="">-- Seleccionar -- </option>
-                                        @foreach ($dataProvider as $item )
-                                            <option value="{{ $item->id }}">{{ $item->nom_prov }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <!-- end row -->
                             
                             <div class="row mb-3">
                                 <label for="image" class="col-sm-2 col-form-label">Imagen</label>
